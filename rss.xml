@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Página Web</title>
+        <link>https://tarea3.emilioalfaro.es/emilio/index.html</link>
+        <description>Archivo RSS de mi web</description>
+        <item>
+            <title>Página web de mi ciudad</title>
+            <link>https://albacete.es/</link>
+            <description>Página principal del ayuntamiento</description>
+        </item>
+        <item>
+            <title>Emilio Alfaro Lizán</title>
+            <link>https://tarea3.emilioalfaro.es/emilio/index.html</link>
+            <description>Accede a mas información en mi web</description>
+        </item>
+    </channel>
+</rss>
