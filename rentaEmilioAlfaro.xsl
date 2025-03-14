@@ -81,7 +81,12 @@
         <h1>Declarante en revisión:</h1>
         <p>
           NIF: <xsl:value-of select="revision/@declarantes"/><br/>
-          Nombre: <xsl:value-of select="declarantes/empresa[@nif = /renta/revision/@declarantes]/nombre"/>
+          Nombre: 
+          <xsl:for-each select="declarantes/empresa">
+            <xsl:if test="@nif = /renta/revision/@declarantes">
+              <xsl:value-of select="nombre"/>
+            </xsl:if>
+          </xsl:for-each>
         </p>
       </body>
     </html>
