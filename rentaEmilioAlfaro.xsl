@@ -7,12 +7,12 @@
   <xsl:template match="/renta">
     <html>
       <head>
-        <title>HACIENDA-RENTTA 2024</title>
+        <title>HACIENDA RENTA 2024</title>
         <!-- Estilos CSS para mejorar la presentación -->
         <style>
-          body { font-family: Arial, sans-serif; margin: 20px; }
-          h1 { color: #2c3e50; font-size: 24px; text-align: center; }
-          h2 { color: #34495e; font-size: 20px; }
+          body { font-family: BebasNeue, sans-serif; margin: 25px; }
+          h1 { color: #2c3e50; font-size: 26px; text-align: center; }
+          h2 { color: #34495e; font-size: 22px; }
           p { margin: 5px 0; }
           table { width: 80%; border-collapse: collapse; margin: 10px 0; }
           th, td { border: 1px solid #000; padding: 8px; text-align: left; }
@@ -22,7 +22,7 @@
       </head>
       <body>
         <!-- Título principal -->
-        <h1>HACIENDA-RENTTA 2024</h1>
+        <h1>HACIENDA RENTA 2024</h1>
 
         <!-- Período de declaración -->
         <p>del <xsl:value-of select="plazo/inicio"/> al <xsl:value-of select="plazo/fin"/></p>
@@ -62,14 +62,14 @@
           </tr>
           <xsl:for-each select="empresa">
             <tr>
-              <td>N/A</td>
+              <td>N-325-G</td>
               <td><xsl:value-of select="nombre"/></td>
               <td>
                 <xsl:value-of select="domicilio/calle"/>, 
                 <xsl:value-of select="domicilio/pueblo"/>, 
                 <xsl:value-of select="domicilio/capital"/>
               </td>
-              <td><xsl:value-of select="resultado"/> euros</td>
+              <td class="highlight"><xsl:value-of select="resultado"/> euros</td>
             </tr>
           </xsl:for-each>
         </table>
@@ -81,7 +81,7 @@
             <xsl:if test="resultado/@pagar = 'si'">
               <xsl:value-of select="nombre"/> --> 
               <xsl:choose>
-                <xsl:when test="nombre = 'Sistemas Informáticos'">24500 euros</xsl:when>
+                <xsl:when test="nombre = 'Sistemas Informáticos.com'">24500 euros</xsl:when>
                 <xsl:when test="nombre = 'Ana Parranda'">> 800 euros</xsl:when>
                 <xsl:otherwise><xsl:value-of select="resultado"/> euros</xsl:otherwise>
               </xsl:choose>
@@ -94,7 +94,7 @@
         <h2>el declarante objeto de revision es :</h2>
         <p>
           <xsl:variable name="revision">N-325-G</xsl:variable>
-          <xsl:value-of select="$revision"/> (usando variable)
+          <xsl:value-of select="$revision"/> 
           <br/>
           y se llama <xsl:value-of select="empresa/nombre"/>
         </p>
