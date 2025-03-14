@@ -5,18 +5,21 @@
     <inicio>1-abril-2025</inicio>
     <fin>30-junio-2025</fin>
   </plazo>
-  <nombre contacto="http://www.renta.es">Sr Secretaría de Hacienda</nombre>
-  <declarantes nif="N-214-H">
-    <nombre>Sistemas Informáticos</nombre>
+  <nombre contacto="http://www.renta.es">Sr  Secretario de Hacienda</nombre>
+  <declarantes>
+  <empresa nif="N-214-H">
+    <nombre>Sistemas Informáticos.com</nombre>
+    <domicilio>
     <calle>la paz 27</calle>
     <capital>albacete</capital>
+    </domicilio>
     <domicilio>
       <calle>Concepción 12</calle>
       <capital>Albacete</capital>
     </domicilio>
     <resultado pagar="si">24500</resultado>
-  </declarantes>
-  <empresa>
+  </empresa>
+  <empresa nif="N325-G">
     <nombre>Cooperativa del aceite</nombre>
     <domicilio>
       <calle>Mayor 2</calle>
@@ -27,22 +30,29 @@
   </empresa>
   <particular nif="N-6654563-A">
     <nombre>Pepe Perez</nombre>
-    <domicilio>Gran Vía 18</domicilio>
+    <domicilio>
+    <calle>Gran Vía 18</calle>
     <capital>Madrid</capital>
+    </domicilio>
     <resultado pagar="no">235</resultado>
   </particular>
   <particular nif="N-123456-B">
+  <domicilio>
     <nombre>Ana Parranda</nombre>
     <calle>Pizarro 18</calle>
     <capital>Albacete</capital>
+    </domicilio>
     <resultado pagar="si">800</resultado>
   </particular>
   <particular nif="N-66453-B">
     <nombre>Rosaura Castellano</nombre>
+    <domicilio>
     <calle>De la Paz</calle>
     <pueblo>Villarrobledo</pueblo>
     <capital>Albacete</capital>
+    </domicilio>
     <resultado pagar="no">840</resultado>
   </particular>
-  <declarantes declarantes="N-325-G"/>
+  </declarantes>
+  <revision declarantes="N-325-G"/>
 </renta>

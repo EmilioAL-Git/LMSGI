@@ -24,7 +24,7 @@
         <p>del <xsl:value-of select="plazo/inicio"/> al <xsl:value-of select="plazo/fin"/></p>
 
         <!-- Contacto (lo sacamos del XML) -->
-        <p>contactar con <xsl:value-of select="nombre"/> ---contactar</p>
+                <p>contactar con <a href="{nombre/@contacto}"><xsl:value-of select="nombre"/> ---contactar</a></p>
 
         <!-- Número de declarantes (contamos los nodos) -->
         <h1>Hay <xsl:value-of select="count(particular) + count(empresa) + 1"/> declarantes</h1>
