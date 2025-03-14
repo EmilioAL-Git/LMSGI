@@ -10,7 +10,7 @@
         <title>HACIENDA RENTA 2024</title>
         <!-- Estilos CSS para mejorar la presentación -->
         <style>
-          body { font-family: BebasNeue, sans-serif; margin: 25px; }
+          body { font-family: Arial, sans-serif; margin: 25px; }
           h1 { color: #2c3e50; font-size: 26px; text-align: center; }
           h2 { color: #34495e; font-size: 22px; }
           p { margin: 5px 0; }
