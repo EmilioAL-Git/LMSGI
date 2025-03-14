@@ -24,13 +24,13 @@
         <p>del <xsl:value-of select="plazo/inicio"/> al <xsl:value-of select="plazo/fin"/></p>
 
         <!-- Contacto (lo sacamos del XML) -->
-        <p>contactar con <xsl:value-of select="nombre"/> ---contactar</p>
+        <p>contactar con <a href="{nombre/@contacto}"><xsl:value-of select="nombre"/> ---contactar</a></p>
 
         <!-- Número de declarantes (contamos los nodos) -->
-        <p>Hay <xsl:value-of select="count(particular) + count(empresa) + 1"/> declarantes</p>
+        <h1>Hay <xsl:value-of select="count(particular) + count(empresa) + 1"/> declarantes</h1>
 
         <!-- Lista de particulares (usamos un bucle para leerlos) -->
-        <p>Los particulares son:</p>
+        <h1>Los particulares son:</h1>
         <ol>
           <xsl:for-each select="particular">
             <li>particular - <xsl:value-of select="nombre"/></li>
@@ -38,13 +38,13 @@
         </ol>
 
         <!-- Lista de empresas (ponemos los datos del XML) -->
-        <p>Las empresas son:</p>
+        <h1>Las empresas son:</h1>
         <table>
           <tr>
-            <th>nif</th>
-            <th>nombre</th>
-            <th>domicilio</th>
-            <th>resultado</th>
+            <th>Nif</th>
+            <th>Nombre</th>
+            <th>Domicilio</th>
+            <th>Resultado</th>
           </tr>
           <tr>
             <td><xsl:value-of select="declarantes/@nif"/></td>
@@ -61,7 +61,7 @@
         </table>
 
         <!-- Declarantes a pagar (buscamos los que tienen pagar="si") -->
-        <p>Los declarantes a pagar:</p>
+        <h1>Los declarantes a pagar:</h1>
         <p>
           <xsl:if test="declarantes/resultado/@pagar = 'si'">
             <xsl:value-of select="declarantes/nombre"/> --> <xsl:value-of select="declarantes/resultado"/> euros<br/>
@@ -74,7 +74,7 @@
         </p>
 
         <!-- Declarante objeto de revisión -->
-        <p>el declarante objeto de revision es :</p>
+        <h1>el declarante objeto de revision es :</h1>
         <p>N-325-G <br/>y se llama <xsl:value-of select="empresa/nombre"/></p>
       </body>
     </html>
