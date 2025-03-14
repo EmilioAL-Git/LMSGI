@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="rentaEmilioAlfaro.xsl"?>
+<renta periodo="2024">
+  <plazo>
+    <inicio>1-abril-2025</inicio>
+    <fin>30-junio-2025</fin>
+  </plazo>
+  <nombre contacto="http://www.renta.es">Sr Secretaría de Hacienda</nombre>
+  <declarantes nif="N-214-H">
+    <nombre>Sistemas Informáticos</nombre>
+    <calle>la paz 27</calle>
+    <capital>albacete</capital>
+    <domicilio>
+      <calle>Concepción 12</calle>
+      <capital>Albacete</capital>
+    </domicilio>
+    <resultado pagar="si">24500</resultado>
+  </declarantes>
+  <empresa>
+    <nombre>Cooperativa del aceite</nombre>
+    <domicilio>
+      <calle>Mayor 2</calle>
+      <pueblo>Molinicos</pueblo>
+      <capital>Albacete</capital>
+    </domicilio>
+    <resultado pagar="no">1000</resultado>
+  </empresa>
+  <particular nif="N-6654563-A">
+    <nombre>Pepe Perez</nombre>
+    <domicilio>Gran Vía 18</domicilio>
+    <capital>Madrid</capital>
+    <resultado pagar="no">235</resultado>
+  </particular>
+  <particular nif="N-123456-B">
+    <nombre>Ana Parranda</nombre>
+    <calle>Pizarro 18</calle>
+    <capital>Albacete</capital>
+    <resultado pagar="si">800</resultado>
+  </particular>
+  <particular nif="N-66453-B">
+    <nombre>Rosaura Castellano</nombre>
+    <calle>De la Paz</calle>
+    <pueblo>Villarrobledo</pueblo>
+    <capital>Albacete</capital>
+    <resultado pagar="no">840</resultado>
+  </particular>
+  <declarantes declarantes="N-325-G"/>
+</renta>
