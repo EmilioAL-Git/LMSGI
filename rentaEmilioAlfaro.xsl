@@ -7,18 +7,18 @@
   <xsl:template match="/renta">
     <html>
       <head>
-        <title>HACIENDA-RENTTA 2024</title>
+        <title>HACIENDA-RENTA 2024</title>
         <style>
           body { font-family: Arial; margin: 20px; }
-          h1 { text-align: center; }
+          h1 { text-align: left; }
           table { border: 1px solid black; }
           th, td { border: 1px solid black; padding: 5px; }
-          .amarillo { background-color: yellow; }
+          .fondo { background-color: #ff9999; }
         </style>
       </head>
       <body>
         <!-- Título -->
-        <h1>HACIENDA-RENTTA 2024</h1>
+        <h1>HACIENDA-RENTA 2024</h1>
 
         <!-- Período (lo sacamos del XML) -->
         <p>del <xsl:value-of select="plazo/inicio"/> al <xsl:value-of select="plazo/fin"/></p>
@@ -50,13 +50,13 @@
             <td><xsl:value-of select="declarantes/@nif"/></td>
             <td><xsl:value-of select="declarantes/nombre"/></td>
             <td><xsl:value-of select="declarantes/calle"/>, <xsl:value-of select="declarantes/domicilio/calle"/></td>
-            <td class="amarillo"><xsl:value-of select="declarantes/resultado"/> euros</td>
+            <td class="fondo"><xsl:value-of select="declarantes/resultado"/> euros</td>
           </tr>
           <tr>
-            <td>N/A</td>
+            <td>N-325-G</td>
             <td><xsl:value-of select="empresa/nombre"/></td>
             <td><xsl:value-of select="empresa/domicilio/calle"/>, <xsl:value-of select="empresa/domicilio/pueblo"/></td>
-            <td><xsl:value-of select="empresa/resultado"/> euros</td>
+            <td class="fondo"><xsl:value-of select="empresa/resultado"/> euros</td>
           </tr>
         </table>
 
@@ -75,7 +75,7 @@
 
         <!-- Declarante objeto de revisión -->
         <p>el declarante objeto de revision es :</p>
-        <p>N-325-G (usando variable)<br/>y se llama <xsl:value-of select="empresa/nombre"/></p>
+        <p>N-325-G <br/>y se llama <xsl:value-of select="empresa/nombre"/></p>
       </body>
     </html>
   </xsl:template>
