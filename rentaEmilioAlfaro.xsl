@@ -47,15 +47,15 @@
             <th>Resultado</th>
           </tr>
           <tr>
-            <td><xsl:value-of select="declarantes/@nif"/></td>
-            <td><xsl:value-of select="declarantes/nombre"/></td>
-            <td><xsl:value-of select="declarantes/calle"/>, <xsl:value-of select="declarantes/domicilio/calle"/></td>
+            <td class="fondo"><xsl:value-of select="declarantes/@nif"/></td>
+            <td class="fondo"><xsl:value-of select="declarantes/nombre"/></td>
+            <td class="fondo"><xsl:value-of select="declarantes/calle"/>, <xsl:value-of select="declarantes/domicilio/calle"/></td>
             <td class="fondo"><xsl:value-of select="declarantes/resultado"/> euros</td>
           </tr>
           <tr>
-            <td>N-325-G</td>
-            <td><xsl:value-of select="empresa/nombre"/></td>
-            <td><xsl:value-of select="empresa/domicilio/calle"/>, <xsl:value-of select="empresa/domicilio/pueblo"/></td>
+            <td class="fondo">N-325-G</td>
+            <td class="fondo"><xsl:value-of select="empresa/nombre"/></td>
+            <td class="fondo"><xsl:value-of select="empresa/domicilio/calle"/>, <xsl:value-of select="empresa/domicilio/pueblo"/></td>
             <td class="fondo"><xsl:value-of select="empresa/resultado"/> euros</td>
           </tr>
         </table>
