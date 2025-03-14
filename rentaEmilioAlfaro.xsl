@@ -31,7 +31,12 @@
         <h1>Particulares:</h1>
         <ol>
           <xsl:for-each select="declarantes/particular">
-            <li><xsl:value-of select="nombre"/></li>
+            <li>
+              <xsl:choose>
+                <xsl:when test="nombre"><xsl:value-of select="nombre"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="domicilio/nombre"/></xsl:otherwise>
+              </xsl:choose>
+            </li>
           </xsl:for-each>
         </ol>
 
@@ -63,7 +68,11 @@
         <p>
           <xsl:for-each select="declarantes/particular | declarantes/empresa">
             <xsl:if test="resultado/@pagar = 'si'">
-              <xsl:value-of select="nombre"/> paga <xsl:value-of select="resultado"/> euros<br/>
+              <xsl:choose>
+                <xsl:when test="nombre"><xsl:value-of select="nombre"/></xsl:when>
+                <xsl:otherwise><xsl:value-of select="domicilio/nombre"/></xsl:otherwise>
+              </xsl:choose>
+              paga <xsl:value-of select="resultado"/> euros<br/>
             </xsl:if>
           </xsl:for-each>
         </p>
@@ -72,11 +81,7 @@
         <h1>Declarante en revisión:</h1>
         <p>
           NIF: <xsl:value-of select="revision/@declarantes"/><br/>
-          Nombre: <xsl:for-each select="declarantes/empresa">
-            <xsl:if test="@nif = /renta/revision/@declarantes">
-              <xsl:value-of select="nombre"/>
-            </xsl:if>
-          </xsl:for-each>
+          Nombre: <xsl:value-of select="declarantes/empresa[@nif = /renta/revision/@declarantes]/nombre"/>
         </p>
       </body>
     </html>
