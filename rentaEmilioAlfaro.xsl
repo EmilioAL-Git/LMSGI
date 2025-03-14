@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <!-- Esto hace que la salida sea una página web -->
   <xsl:output method="html"/>
 
-  <!-- Aquí empezamos a crear la página desde el nodo "renta" -->
   <xsl:template match="/renta">
     <html>
       <head>
@@ -17,65 +15,69 @@
         </style>
       </head>
       <body>
-        <!-- Título -->
+        <!-- Título simple -->
         <h1>HACIENDA-RENTA 2024</h1>
 
-        <!-- Período (lo sacamos del XML) -->
-        <p>del <xsl:value-of select="plazo/inicio"/> al <xsl:value-of select="plazo/fin"/></p>
+        <!-- Período -->
+        <p>Del <xsl:value-of select="plazo/inicio"/> al <xsl:value-of select="plazo/fin"/></p>
 
-        <!-- Contacto (lo sacamos del XML) -->
-                <p>contactar con <a href="{nombre/@contacto}"><xsl:value-of select="nombre"/> ---contactar</a></p>
+        <!-- Contacto -->
+        <p>Contactar con: <a href="{nombre/@contacto}"><xsl:value-of select="nombre"/></a></p>
 
-        <!-- Número de declarantes (contamos los nodos) -->
-        <h1>Hay <xsl:value-of select="count(particular) + count(empresa) + 1"/> declarantes</h1>
+        <!-- Contar declarantes -->
+        <h1>Total de declarantes: <xsl:value-of select="count(declarantes/particular) + count(declarantes/empresa)"/></h1>
 
-        <!-- Lista de particulares (usamos un bucle para leerlos) -->
-        <h1>Los particulares son:</h1>
+        <!-- Lista de particulares -->
+        <h1>Particulares:</h1>
         <ol>
-          <xsl:for-each select="particular">
-            <li>particular - <xsl:value-of select="nombre"/></li>
+          <xsl:for-each select="declarantes/particular">
+            <li><xsl:value-of select="nombre"/></li>
           </xsl:for-each>
         </ol>
 
-        <!-- Lista de empresas (ponemos los datos del XML) -->
-        <h1>Las empresas son:</h1>
+        <!-- Tabla de empresas -->
+        <h1>Empresas:</h1>
         <table>
           <tr>
-            <th>Nif</th>
+            <th>NIF</th>
             <th>Nombre</th>
             <th>Domicilio</th>
             <th>Resultado</th>
           </tr>
-          <tr>
-            <td class="fondo"><xsl:value-of select="declarantes/@nif"/></td>
-            <td class="fondo"><xsl:value-of select="declarantes/nombre"/></td>
-            <td class="fondo"><xsl:value-of select="declarantes/calle"/>, <xsl:value-of select="declarantes/domicilio/calle"/></td>
-            <td class="fondo"><xsl:value-of select="declarantes/resultado"/> euros</td>
-          </tr>
-          <tr>
-            <td class="fondo">N-325-G</td>
-            <td class="fondo"><xsl:value-of select="empresa/nombre"/></td>
-            <td class="fondo"><xsl:value-of select="empresa/domicilio/calle"/>, <xsl:value-of select="empresa/domicilio/pueblo"/></td>
-            <td class="fondo"><xsl:value-of select="empresa/resultado"/> euros</td>
-          </tr>
+          <xsl:for-each select="declarantes/empresa">
+            <tr>
+              <td class="fondo"><xsl:value-of select="@nif"/></td>
+              <td class="fondo"><xsl:value-of select="nombre"/></td>
+              <td class="fondo">
+                <xsl:value-of select="domicilio/calle"/>, 
+                <xsl:value-of select="domicilio/capital"/>
+                <xsl:if test="domicilio/pueblo">, <xsl:value-of select="domicilio/pueblo"/></xsl:if>
+              </td>
+              <td class="fondo"><xsl:value-of select="resultado"/> euros</td>
+            </tr>
+          </xsl:for-each>
         </table>
 
-        <!-- Declarantes a pagar (buscamos los que tienen pagar="si") -->
-        <h1>Los declarantes a pagar:</h1>
+        <!-- Declarantes que pagan -->
+        <h1>Declarantes que pagan:</h1>
         <p>
-          <xsl:if test="declarantes/resultado/@pagar = 'si'">
-            <xsl:value-of select="declarantes/nombre"/> --> <xsl:value-of select="declarantes/resultado"/> euros<br/>
-          </xsl:if>
-          <xsl:for-each select="particular">
+          <xsl:for-each select="declarantes/particular | declarantes/empresa">
             <xsl:if test="resultado/@pagar = 'si'">
-              <xsl:value-of select="nombre"/> --> > 800 euros<br/>
+              <xsl:value-of select="nombre"/> paga <xsl:value-of select="resultado"/> euros<br/>
             </xsl:if>
           </xsl:for-each>
         </p>
 
-        <!-- Declarante objeto de revisión -->
-        <h1>el declarante objeto de revision es :</h1>
-        <p>N-325-G <br/>y se llama <xsl:value-of select="empresa/nombre"/></p>
+        <!-- Declarante en revisión -->
+        <h1>Declarante en revisión:</h1>
+        <p>
+          NIF: <xsl:value-of select="revision/@declarantes"/><br/>
+          Nombre: <xsl:for-each select="declarantes/empresa">
+            <xsl:if test="@nif = /renta/revision/@declarantes">
+              <xsl:value-of select="nombre"/>
+            </xsl:if>
+          </xsl:for-each>
+        </p>
       </body>
     </html>
   </xsl:template>
